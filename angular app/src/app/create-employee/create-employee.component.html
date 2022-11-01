@@ -1,0 +1,63 @@
+<div class="col-md-6 offset-md-3">
+    <h3> New Employee</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div>
+                <label><u><b>First Name</b></u></label>
+
+                <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="employee.firstName"
+                    required minlength="4" #firstName="ngModel" placeholder="Enter First Name">
+
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-warning">
+                    Value Should be Alphabets only.
+                </div>
+
+                <div *ngIf="firstName.errors?.['required']">
+                    <pre>First Name is required.</pre>
+                </div>
+
+                <div *ngIf="firstName.errors?.['minlength']">
+                    <pre>First Name must be at least 4 characters long.</pre>
+                </div>
+            </div>
+            <div>
+                <label><u><b>Last Name</b></u></label>
+
+                <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="employee.lastName"
+                    required minlength="4" #lastName="ngModel" placeholder="Enter Last Name">
+
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-warning">
+                    Value Should be Alphabets only.
+                </div>
+
+                <div *ngIf="lastName.errors?.['required']">
+                    <pre>Last Name is required.</pre>
+                </div>
+                <div *ngIf="lastName.errors?.['minlength']">
+                    <pre>Last Name must be at least 4 characters long.</pre>
+                </div>
+
+            </div>
+
+            <div>
+                <label><u><b>Email</b></u></label>
+                <input type="email" id="email" name="email" class="form-control" [(ngModel)]="employee.email" required
+                    minlength="4" #email="ngModel" placeholder="Enter Email">
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-warning">
+                    Value must have @.
+                </div>
+                <div *ngIf="email.errors?.['required']">
+                    <pre>Email is required.</pre>
+                </div>
+
+                <div *ngIf="email.errors?.['minlength']">
+                    <pre>Email must be at least 4 characters long.</pre>
+                </div>
+
+            </div>
+
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
